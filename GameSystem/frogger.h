@@ -4,7 +4,7 @@
 #include "config.h"
 
 #define FROG_SIZE 4
-#define ROAD_LANES 4
+#define ROAD_LANES 3
 #define RIVER_LANES 3
 #define MAX_CARS 8
 #define MAX_LOGS 6
