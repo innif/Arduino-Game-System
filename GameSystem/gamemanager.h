@@ -1,4 +1,3 @@
-// gamemanager.h
 #ifndef GAMEMANAGER_H
 #define GAMEMANAGER_H
 
@@ -29,7 +28,9 @@ public:
   void showMenu();
   void handleMenuInput();
   void showGameOver();
+  void showGameWon();
   void handleGameOverInput();
+  void handleGameWonInput();
   int getCurrentGame() { return currentGame; }
   GameState getState() { return currentState; }
 };

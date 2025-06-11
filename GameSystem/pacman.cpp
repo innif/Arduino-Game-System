@@ -86,15 +86,10 @@ void PacManGame::update() {
 void PacManGame::draw() {
   clearDisplay();
   
-  
-  if (gameWon) {
-    drawCenteredText("YOU WIN!", 30, 1);
-  } else {
-    drawMaze();
-    drawGhosts();
-    drawPacMan();
-    drawUI();
-  }
+  drawMaze();
+  drawGhosts();
+  drawPacMan();
+  drawUI();
   
   updateDisplay();
 }

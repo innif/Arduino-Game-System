@@ -42,7 +42,8 @@ enum GameID {
 enum GameState {
   STATE_MENU,
   STATE_PLAYING,
-  STATE_GAME_OVER
+  STATE_GAME_OVER,
+  STATE_GAME_WON
 };
 
 // Global display object

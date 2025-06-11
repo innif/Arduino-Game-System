@@ -7,7 +7,7 @@
 #define MAZE_HEIGHT 8
 #define CELL_SIZE 8
 #define MAX_GHOSTS 2
-#define TOTAL_DOTS 10// 66
+#define TOTAL_DOTS 20
 
 struct PacMan {
   int x, y;
@@ -51,6 +51,7 @@ public:
   void draw();
   void handleInput();
   bool isGameOver() { return gameOver; }
+  bool isGameWon() { return gameWon; }
   int getScore() { return score; }
   const char* getName() { return "PAC-MAN"; }
 };

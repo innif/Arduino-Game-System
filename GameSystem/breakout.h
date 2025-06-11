@@ -11,7 +11,7 @@
 #define BRICK_HEIGHT 4
 #define BRICK_ROWS 5
 #define BRICK_COLS 10
-#define BRICK_OFFSET_Y 10
+#define BRICK_OFFSET_Y 8
 
 struct Ball {
   float x, y;
@@ -50,6 +50,7 @@ public:
   void draw();
   void handleInput();
   bool isGameOver() { return gameOver; }
+  bool isGameWon() { return gameWon; }
   int getScore() { return score; }
   const char* getName() { return "BREAKOUT"; }
 };

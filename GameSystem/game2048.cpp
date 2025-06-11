@@ -23,7 +23,7 @@ void Game2048::init() {
 }
 
 void Game2048::update() {
-  handleInput();
+  handleInput(); // Add input handling to update!
   
   if (moved) {
     addRandomTile();
@@ -53,9 +53,9 @@ void Game2048::draw() {
     }
   }
   
-  // Draw win message (left side)
+  // Draw win message (right side)
   if (hasWon) {
-    display.setCursor(0, 25);
+    display.setCursor(90, 25);
     display.print(F("WIN!"));
   }
   

@@ -211,7 +211,7 @@ void BreakoutGame::drawUI() {
   display.print(score);
   
   // Lives
-  display.setCursor(SCREEN_WIDTH - 45, 0);
+  display.setCursor(SCREEN_WIDTH - 30, 0);
   display.print(F("Lives:"));
   display.print(lives);
 }

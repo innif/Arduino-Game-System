@@ -7,7 +7,7 @@
 #define TILE_SIZE 14
 #define TILE_MARGIN 2
 #define BOARD_OFFSET_X 32
-#define BOARD_OFFSET_Y 0
+#define BOARD_OFFSET_Y 8
 
 class Game2048 {
 private:
@@ -35,6 +35,7 @@ public:
   void draw();
   void handleInput();
   bool isGameOver() { return gameOver; }
+  bool isGameWon() { return hasWon; }
   int getScore() { return score; }
   const char* getName() { return "2048"; }
 };

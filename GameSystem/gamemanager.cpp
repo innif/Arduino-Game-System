@@ -56,7 +56,11 @@ void GameManager::update() {
           game2048.update();
           game2048.draw();
           if (game2048.isGameOver()) {
-            setState(STATE_GAME_OVER);
+            if (game2048.isGameWon()) {
+              setState(STATE_GAME_WON);
+            } else {
+              setState(STATE_GAME_OVER);
+            }
           }
           break;
           
@@ -64,7 +68,11 @@ void GameManager::update() {
           breakoutGame.update();
           breakoutGame.draw();
           if (breakoutGame.isGameOver()) {
-            setState(STATE_GAME_OVER);
+            if (breakoutGame.isGameWon()) {
+              setState(STATE_GAME_WON);
+            } else {
+              setState(STATE_GAME_OVER);
+            }
           }
           break;
           
@@ -88,7 +96,12 @@ void GameManager::update() {
           pacmanGame.update();
           pacmanGame.draw();
           if (pacmanGame.isGameOver()) {
-            setState(STATE_GAME_OVER);
+            // Check if player won or lost
+            if (pacmanGame.isGameWon()) {
+              setState(STATE_GAME_WON);
+            } else {
+              setState(STATE_GAME_OVER);
+            }
           }
           break;
       }
@@ -96,6 +109,10 @@ void GameManager::update() {
       
     case STATE_GAME_OVER:
       handleGameOverInput();
+      break;
+      
+    case STATE_GAME_WON:
+      handleGameWonInput();
       break;
   }
 }
@@ -109,6 +126,9 @@ void GameManager::setState(GameState newState) {
       break;
     case STATE_GAME_OVER:
       showGameOver();
+      break;
+    case STATE_GAME_WON:
+      showGameWon();
       break;
   }
 }
@@ -253,7 +273,44 @@ void GameManager::showGameOver() {
   updateDisplay();
 }
 
+void GameManager::showGameWon() {
+  clearDisplay();
+  
+  drawCenteredText("YOU WON!", 5, 2);
+  
+  // Show score
+  int score = 0;
+  switch (currentGame) {
+    case GAME_SNAKE: score = snakeGame.getScore(); break;
+    case GAME_TETRIS: score = tetrisGame.getScore(); break;
+    case GAME_FLAPPY: score = flappyGame.getScore(); break;
+    case GAME_2048: score = game2048.getScore(); break;
+    case GAME_BREAKOUT: score = breakoutGame.getScore(); break;
+    case GAME_FROGGER: score = froggerGame.getScore(); break;
+    case GAME_HELICOPTER: score = helicopterGame.getScore(); break;
+    case GAME_PACMAN: score = pacmanGame.getScore(); break;
+  }
+  
+  char scoreText[20];
+  sprintf(scoreText, "Score: %d", score);
+  drawCenteredText(scoreText, 28, 1);
+  
+  drawCenteredText("UP: Menu", 45, 1);
+  drawCenteredText("RIGHT: Play Again", 55, 1);
+  
+  updateDisplay();
+}
+
 void GameManager::handleGameOverInput() {
+  if (buttons.upPressed) {
+    setState(STATE_MENU);
+  }
+  else if (buttons.rightPressed) {
+    setGame(currentGame);
+  }
+}
+
+void GameManager::handleGameWonInput() {
   if (buttons.upPressed) {
     setState(STATE_MENU);
   }
