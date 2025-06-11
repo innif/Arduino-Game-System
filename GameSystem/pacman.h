@@ -7,7 +7,7 @@
 #define MAZE_HEIGHT 8
 #define CELL_SIZE 8
 #define MAX_GHOSTS 2
-#define TOTAL_DOTS 20
+#define TOTAL_DOTS 66
 
 struct PacMan {
   int x, y;

@@ -55,7 +55,7 @@ void Game2048::draw() {
   
   // Draw win message (right side)
   if (hasWon) {
-    display.setCursor(90, 25);
+    display.setCursor(0, 25);
     display.print(F("WIN!"));
   }
   

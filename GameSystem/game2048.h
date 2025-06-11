@@ -7,7 +7,7 @@
 #define TILE_SIZE 14
 #define TILE_MARGIN 2
 #define BOARD_OFFSET_X 32
-#define BOARD_OFFSET_Y 8
+#define BOARD_OFFSET_Y 0
 
 class Game2048 {
 private:
