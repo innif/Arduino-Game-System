@@ -261,7 +261,7 @@ void GameManager::handleMenuInput() {
 void GameManager::showGameOver() {
   clearDisplay();
   
-  drawCenteredText("GAME OVER", 5, 2);
+  drawCenteredText("GAME OVER", 0, 2);
   
   // Get score and check for highscore
   int score = 0;
@@ -285,21 +285,21 @@ void GameManager::showGameOver() {
   // Show score
   char scoreText[30];
   sprintf(scoreText, "Score: %d", score);
-  drawCenteredText(scoreText, 22, 1);
+  drawCenteredText(scoreText, 17, 1);
   
   // Show highscore
   int highscore = getGameHighscore(currentGame);
   char highscoreText[30];
   sprintf(highscoreText, "Best: %d", highscore);
-  drawCenteredText(highscoreText, 32, 1);
+  drawCenteredText(highscoreText, 27, 1);
   
   // Show NEW HIGHSCORE message
   if (newHighscore) {
-    drawCenteredText("NEW HIGHSCORE!", 42, 1);
+    drawCenteredText("NEW HIGHSCORE!", 37, 1);
   }
   
-  drawCenteredText("UP: Menu", 52, 1);
-  drawCenteredText("RIGHT: Restart", 62, 1);
+  drawCenteredText("UP: Menu", 47, 1);
+  drawCenteredText("RIGHT: Restart", 57, 1);
   
   updateDisplay();
 }
@@ -307,7 +307,7 @@ void GameManager::showGameOver() {
 void GameManager::showGameWon() {
   clearDisplay();
   
-  drawCenteredText("YOU WON!", 5, 2);
+  drawCenteredText("YOU WON!", 0, 2);
   
   // Get score and check for highscore
   int score = 0;
@@ -331,21 +331,21 @@ void GameManager::showGameWon() {
   // Show score
   char scoreText[30];
   sprintf(scoreText, "Score: %d", score);
-  drawCenteredText(scoreText, 22, 1);
+  drawCenteredText(scoreText, 17, 1);
   
   // Show highscore
   int highscore = getGameHighscore(currentGame);
   char highscoreText[30];
   sprintf(highscoreText, "Best: %d", highscore);
-  drawCenteredText(highscoreText, 32, 1);
+  drawCenteredText(highscoreText, 27, 1);
   
   // Show NEW HIGHSCORE message
   if (newHighscore) {
-    drawCenteredText("NEW HIGHSCORE!", 42, 1);
+    drawCenteredText("NEW HIGHSCORE!", 37, 1);
   }
   
-  drawCenteredText("UP: Menu", 52, 1);
-  drawCenteredText("RIGHT: Play Again", 62, 1);
+  drawCenteredText("UP: Menu", 47, 1);
+  drawCenteredText("RIGHT: Play Again", 57, 1);
   
   updateDisplay();
 }
