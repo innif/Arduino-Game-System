@@ -10,6 +10,7 @@
 #include "frogger.h"
 #include "helicopter.h"
 #include "pacman.h"
+#include "highscore.h"
 
 class GameManager {
 private:
@@ -19,6 +20,7 @@ private:
   int menuScroll; // For scrolling menu
   const char* gameNames[MAX_GAMES] = {"SNAKE", "TETRIS", "FLAPPY BIRD", "2048", "BREAKOUT", "FROGGER", "HELICOPTER", "PAC-MAN"};
   static const int VISIBLE_MENU_ITEMS = 3;
+  bool newHighscore; // Flag for new highscore
   
 public:
   void init();

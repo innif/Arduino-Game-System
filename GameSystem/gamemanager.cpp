@@ -17,6 +17,11 @@ void GameManager::init() {
   currentGame = 0;
   menuSelection = 0;
   menuScroll = 0;
+  newHighscore = false;
+  
+  // Initialize highscore system
+  initHighscores();
+  
   showMenu();
 }
 
@@ -180,17 +185,25 @@ void GameManager::showMenu() {
   
   for (int i = 0; i < VISIBLE_MENU_ITEMS && (startItem + i) < MAX_GAMES; i++) {
     int gameIndex = startItem + i;
-    int y = 25 + i * 15;
+    int y = 25 + i * 12;
     
     if (menuSelection == gameIndex) {
-      display.fillRect(5, y - 2, SCREEN_WIDTH - 10, 12, SSD1306_WHITE);
+      display.fillRect(5, y - 2, SCREEN_WIDTH - 10, 10, SSD1306_WHITE);
       display.setTextColor(SSD1306_BLACK);
     } else {
       display.setTextColor(SSD1306_WHITE);
     }
     
+    // Game name
     display.setCursor(10, y);
-    display.println(gameNames[gameIndex]);
+    display.print(gameNames[gameIndex]);
+    
+    // Highscore
+    int highscore = getGameHighscore(gameIndex);
+    if (highscore > 0) {
+      display.setCursor(SCREEN_WIDTH - 35, y);
+      display.print(highscore);
+    }
   }
   
   // Show scroll indicators if needed
@@ -250,7 +263,7 @@ void GameManager::showGameOver() {
   
   drawCenteredText("GAME OVER", 5, 2);
   
-  // Show score
+  // Get score and check for highscore
   int score = 0;
   switch (currentGame) {
     case GAME_SNAKE: score = snakeGame.getScore(); break;
@@ -263,12 +276,30 @@ void GameManager::showGameOver() {
     case GAME_PACMAN: score = pacmanGame.getScore(); break;
   }
   
-  char scoreText[20];
-  sprintf(scoreText, "Score: %d", score);
-  drawCenteredText(scoreText, 28, 1);
+  // Check and save highscore
+  newHighscore = checkNewHighscore(currentGame, score);
+  if (newHighscore) {
+    saveGameHighscore(currentGame, score);
+  }
   
-  drawCenteredText("UP: Menu", 45, 1);
-  drawCenteredText("RIGHT: Restart", 55, 1);
+  // Show score
+  char scoreText[30];
+  sprintf(scoreText, "Score: %d", score);
+  drawCenteredText(scoreText, 22, 1);
+  
+  // Show highscore
+  int highscore = getGameHighscore(currentGame);
+  char highscoreText[30];
+  sprintf(highscoreText, "Best: %d", highscore);
+  drawCenteredText(highscoreText, 32, 1);
+  
+  // Show NEW HIGHSCORE message
+  if (newHighscore) {
+    drawCenteredText("NEW HIGHSCORE!", 42, 1);
+  }
+  
+  drawCenteredText("UP: Menu", 52, 1);
+  drawCenteredText("RIGHT: Restart", 62, 1);
   
   updateDisplay();
 }
@@ -278,7 +309,7 @@ void GameManager::showGameWon() {
   
   drawCenteredText("YOU WON!", 5, 2);
   
-  // Show score
+  // Get score and check for highscore
   int score = 0;
   switch (currentGame) {
     case GAME_SNAKE: score = snakeGame.getScore(); break;
@@ -291,12 +322,30 @@ void GameManager::showGameWon() {
     case GAME_PACMAN: score = pacmanGame.getScore(); break;
   }
   
-  char scoreText[20];
-  sprintf(scoreText, "Score: %d", score);
-  drawCenteredText(scoreText, 28, 1);
+  // Check and save highscore
+  newHighscore = checkNewHighscore(currentGame, score);
+  if (newHighscore) {
+    saveGameHighscore(currentGame, score);
+  }
   
-  drawCenteredText("UP: Menu", 45, 1);
-  drawCenteredText("RIGHT: Play Again", 55, 1);
+  // Show score
+  char scoreText[30];
+  sprintf(scoreText, "Score: %d", score);
+  drawCenteredText(scoreText, 22, 1);
+  
+  // Show highscore
+  int highscore = getGameHighscore(currentGame);
+  char highscoreText[30];
+  sprintf(highscoreText, "Best: %d", highscore);
+  drawCenteredText(highscoreText, 32, 1);
+  
+  // Show NEW HIGHSCORE message
+  if (newHighscore) {
+    drawCenteredText("NEW HIGHSCORE!", 42, 1);
+  }
+  
+  drawCenteredText("UP: Menu", 52, 1);
+  drawCenteredText("RIGHT: Play Again", 62, 1);
   
   updateDisplay();
 }

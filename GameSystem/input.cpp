@@ -30,17 +30,6 @@ void updateInput() {
   buttons.downPressed = buttons.down && !lastButtons.down;
   buttons.leftPressed = buttons.left && !lastButtons.left;
   buttons.rightPressed = buttons.right && !lastButtons.right;
-  
-  // Debug output
-  Serial.print("Buttons - UP:");
-  Serial.print(buttons.up);
-  Serial.print(" DOWN:");
-  Serial.print(buttons.down);
-  Serial.print(" LEFT:");
-  Serial.print(buttons.left);
-  Serial.print(" RIGHT:");
-  Serial.print(buttons.right);
-  Serial.println();
 }
 
 bool isButtonPressed(int pin) {
