@@ -1,3 +1,4 @@
+// config.h
 #ifndef CONFIG_H
 #define CONFIG_H
 
@@ -22,14 +23,16 @@
 #define SCREEN_ADDRESS 0x3C
 
 // Game Constants
-#define MAX_GAMES 3
+#define MAX_GAMES 5
 #define BUTTON_DELAY 150
 
 // Game IDs
 enum GameID {
   GAME_SNAKE = 0,
   GAME_TETRIS = 1,
-  GAME_FLAPPY = 2
+  GAME_FLAPPY = 2,
+  GAME_2048 = 3,
+  GAME_BREAKOUT = 4
 };
 
 // Game States

@@ -1,3 +1,4 @@
+// gamemanager.h
 #ifndef GAMEMANAGER_H
 #define GAMEMANAGER_H
 
@@ -5,13 +6,17 @@
 #include "snake.h"
 #include "tetris.h"
 #include "flappy.h"
+#include "game2048.h"
+#include "breakout.h"
 
 class GameManager {
 private:
   GameState currentState;
   int currentGame;
   int menuSelection;
-  const char* gameNames[MAX_GAMES] = {"SNAKE", "TETRIS", "FLAPPY BIRD"};
+  int menuScroll; // For scrolling menu
+  const char* gameNames[MAX_GAMES] = {"SNAKE", "TETRIS", "FLAPPY BIRD", "2048", "BREAKOUT"};
+  static const int VISIBLE_MENU_ITEMS = 3;
   
 public:
   void init();
