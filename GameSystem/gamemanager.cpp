@@ -67,6 +67,30 @@ void GameManager::update() {
             setState(STATE_GAME_OVER);
           }
           break;
+          
+        case GAME_FROGGER:
+          froggerGame.update();
+          froggerGame.draw();
+          if (froggerGame.isGameOver()) {
+            setState(STATE_GAME_OVER);
+          }
+          break;
+          
+        case GAME_HELICOPTER:
+          helicopterGame.update();
+          helicopterGame.draw();
+          if (helicopterGame.isGameOver()) {
+            setState(STATE_GAME_OVER);
+          }
+          break;
+          
+        case GAME_PACMAN:
+          pacmanGame.update();
+          pacmanGame.draw();
+          if (pacmanGame.isGameOver()) {
+            setState(STATE_GAME_OVER);
+          }
+          break;
       }
       break;
       
@@ -108,6 +132,15 @@ void GameManager::setGame(int gameId) {
       break;
     case GAME_BREAKOUT:
       breakoutGame.init();
+      break;
+    case GAME_FROGGER:
+      froggerGame.init();
+      break;
+    case GAME_HELICOPTER:
+      helicopterGame.init();
+      break;
+    case GAME_PACMAN:
+      pacmanGame.init();
       break;
   }
   
@@ -205,6 +238,9 @@ void GameManager::showGameOver() {
     case GAME_FLAPPY: score = flappyGame.getScore(); break;
     case GAME_2048: score = game2048.getScore(); break;
     case GAME_BREAKOUT: score = breakoutGame.getScore(); break;
+    case GAME_FROGGER: score = froggerGame.getScore(); break;
+    case GAME_HELICOPTER: score = helicopterGame.getScore(); break;
+    case GAME_PACMAN: score = pacmanGame.getScore(); break;
   }
   
   char scoreText[20];

@@ -8,6 +8,9 @@
 #include "flappy.h"
 #include "game2048.h"
 #include "breakout.h"
+#include "frogger.h"
+#include "helicopter.h"
+#include "pacman.h"
 
 class GameManager {
 private:
@@ -15,7 +18,7 @@ private:
   int currentGame;
   int menuSelection;
   int menuScroll; // For scrolling menu
-  const char* gameNames[MAX_GAMES] = {"SNAKE", "TETRIS", "FLAPPY BIRD", "2048", "BREAKOUT"};
+  const char* gameNames[MAX_GAMES] = {"SNAKE", "TETRIS", "FLAPPY BIRD", "2048", "BREAKOUT", "FROGGER", "HELICOPTER", "PAC-MAN"};
   static const int VISIBLE_MENU_ITEMS = 3;
   
 public:

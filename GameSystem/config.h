@@ -23,7 +23,7 @@
 #define SCREEN_ADDRESS 0x3C
 
 // Game Constants
-#define MAX_GAMES 5
+#define MAX_GAMES 8
 #define BUTTON_DELAY 150
 
 // Game IDs
@@ -32,7 +32,10 @@ enum GameID {
   GAME_TETRIS = 1,
   GAME_FLAPPY = 2,
   GAME_2048 = 3,
-  GAME_BREAKOUT = 4
+  GAME_BREAKOUT = 4,
+  GAME_FROGGER = 5,
+  GAME_HELICOPTER = 6,
+  GAME_PACMAN = 7
 };
 
 // Game States
