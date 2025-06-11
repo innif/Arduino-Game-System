@@ -33,8 +33,17 @@ void HighscoreManager::init() {
 }
 
 void HighscoreManager::loadFromEEPROM() {
+  // Clear data structure first to avoid garbage in padding
+  memset(&data, 0, sizeof(data));
+  
   // Read data from EEPROM
   EEPROM.get(HIGHSCORE_BASE_ADDR, data);
+  
+  // Debug: Print loaded data
+  Serial.print("Loaded magic: 0x");
+  Serial.println(data.magic, HEX);
+  Serial.print("Loaded checksum: ");
+  Serial.println(data.checksum);
   
   // Verify data integrity
   if (!isValidData()) {
@@ -52,7 +61,6 @@ void HighscoreManager::saveToEEPROM() {
   
   EEPROM.put(HIGHSCORE_BASE_ADDR, data);
   EEPROM.commit();
-  EEPROM.end();
   
   Serial.println("Highscores saved to EEPROM");
 }
@@ -60,26 +68,35 @@ void HighscoreManager::saveToEEPROM() {
 bool HighscoreManager::isValidData() {
   // Check magic number
   if (data.magic != HIGHSCORE_MAGIC) {
-    Serial.println("Invalid magic number");
+    Serial.print("Magic mismatch: expected 0x");
+    Serial.print(HIGHSCORE_MAGIC, HEX);
+    Serial.print(", got 0x");
+    Serial.println(data.magic, HEX);
     return false;
   }
   
   // Check checksum
   uint16_t savedChecksum = data.checksum;
-  data.checksum = 0; // Temporarily clear for calculation
   uint16_t calculatedChecksum = calculateChecksum();
-  data.checksum = savedChecksum; // Restore
+  
+  Serial.print("Checksum - saved: ");
+  Serial.print(savedChecksum);
+  Serial.print(", calculated: ");
+  Serial.println(calculatedChecksum);
   
   if (savedChecksum != calculatedChecksum) {
-    Serial.println("Checksum mismatch");
-    // return false;
+    Serial.println("Checksum mismatch!");
+    return false;
   }
   
   // Check if scores are reasonable (not negative, not too high)
   for (int i = 0; i < MAX_GAMES; i++) {
     if (data.scores[i] < 0 || data.scores[i] > 999999) {
-        Serial.print("Invalid score for game ");
-      //return false;
+      Serial.print("Invalid score for game ");
+      Serial.print(i);
+      Serial.print(": ");
+      Serial.println(data.scores[i]);
+      return false;
     }
   }
   
@@ -88,17 +105,22 @@ bool HighscoreManager::isValidData() {
 
 uint16_t HighscoreManager::calculateChecksum() {
   uint16_t checksum = 0;
-  uint8_t* ptr = (uint8_t*)&data;
   
-  // Calculate checksum over everything except the checksum field
-  for (int i = 0; i < sizeof(HighscoreData) - sizeof(uint16_t); i++) {
-    checksum += ptr[i];
+  // Include magic number in checksum
+  checksum += data.magic;
+  
+  // Include all scores
+  for (int i = 0; i < MAX_GAMES; i++) {
+    checksum += data.scores[i];
   }
   
   return checksum;
 }
 
 void HighscoreManager::resetToDefaults() {
+  // Clear entire structure first
+  memset(&data, 0, sizeof(data));
+  
   data.magic = HIGHSCORE_MAGIC;
   
   // Set default highscores
@@ -106,7 +128,7 @@ void HighscoreManager::resetToDefaults() {
     data.scores[i] = 0;
   }
   
-  data.checksum = 0;
+  data.checksum = calculateChecksum();
 }
 
 int HighscoreManager::getHighscore(int gameId) {
