@@ -1,4 +1,3 @@
-// breakout.cpp
 #include "breakout.h"
 #include "display.h"
 #include "input.h"
@@ -32,6 +31,7 @@ void BreakoutGame::update() {
   
   if (gameOver || gameWon) return;
   
+  handleInput(); // NOW called in update!
   updatePaddle();
   updateBall();
   
@@ -63,12 +63,12 @@ void BreakoutGame::draw() {
 }
 
 void BreakoutGame::handleInput() {
-  // Paddle movement
+  // Paddle movement - continuous input for smooth control
   if (buttons.left && paddle.x > 0) {
-    paddle.x -= 3;
+    paddle.x -= 2;
   }
   if (buttons.right && paddle.x < SCREEN_WIDTH - PADDLE_WIDTH) {
-    paddle.x += 3;
+    paddle.x += 2;
   }
 }
 
@@ -211,7 +211,7 @@ void BreakoutGame::drawUI() {
   display.print(score);
   
   // Lives
-  display.setCursor(SCREEN_WIDTH - 30, 0);
+  display.setCursor(SCREEN_WIDTH - 45, 0);
   display.print(F("Lives:"));
   display.print(lives);
 }

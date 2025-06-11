@@ -20,10 +20,10 @@ void updateInput() {
   lastButtons = buttons;
   
   // Read current state (inverted because of INPUT_PULLUP)
-  buttons.up = !digitalRead(PIN_BUTTON_UP);
-  buttons.down = !digitalRead(PIN_BUTTON_DOWN);
-  buttons.left = !digitalRead(PIN_BUTTON_LEFT);
-  buttons.right = !digitalRead(PIN_BUTTON_RIGHT);
+  buttons.up = (digitalRead(PIN_BUTTON_UP) == LOW);
+  buttons.down = (digitalRead(PIN_BUTTON_DOWN) == LOW);
+  buttons.left = (digitalRead(PIN_BUTTON_LEFT) == LOW);
+  buttons.right = (digitalRead(PIN_BUTTON_RIGHT) == LOW);
   
   // Detect button press events (just pressed)
   buttons.upPressed = buttons.up && !lastButtons.up;

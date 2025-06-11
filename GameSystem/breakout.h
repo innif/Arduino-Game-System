@@ -1,4 +1,3 @@
-// breakout.h
 #ifndef BREAKOUT_H
 #define BREAKOUT_H
 
@@ -12,7 +11,7 @@
 #define BRICK_HEIGHT 4
 #define BRICK_ROWS 5
 #define BRICK_COLS 10
-#define BRICK_OFFSET_Y 8
+#define BRICK_OFFSET_Y 10
 
 struct Ball {
   float x, y;
