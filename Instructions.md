@@ -5,6 +5,7 @@
 - I2C 0.96 inch OLED Display
 - 4x Push Button 6x6x5mm
 - Perforated Grid Board / Prototype PCB
+- 2x short M3 countersunk head screw (5mm-10mm)
 - Some thin Wire 
 - Some Solder 
 ### Tools
@@ -116,5 +117,42 @@ The result should look like this:
 ![Connected Back](images/1.7.3.jpg)
 
 ## Part 2 - Software
+
+### Step 2.1 - Download Arduino IDE
+[Download](https://www.arduino.cc/en/software/) and install the Arduino IDE.
+
+### Step 2.2 - Open Project
+You have to download the Tiny Arcade Project.
+After you have downloaded the project, you can unzip the file and open the GameSystem.ino File inside the folder with the Arduino IDE.
+
+### Step 2.3 - Install ESP8266-Boards
+To upload the project, you first have to install the ESP8266-Boards in Arduino. Therefore you have to Open `File -> Preferences` and add the following Text into the "Additional boards manager URLs"-Field and press OK.
+```
+http://arduino.esp8266.com/stable/package_esp8266com_index.json
+```
+
+![Arduino Preferences](images/2.3.1.png)
+
+After you have added this URL, you can open the Board Manager on the left hand side and search for ESP8266. If it does not show up, try restarting the Arduino IDE. Click Install and wait for it to finish.
+
+![Board Manager](images/2.3.2.png)
+
+### Step 2.4 - Install Libraries
+Go to the Library Manager on the left hand side and search for `Adafruit SSD1306` click on Install and if asked, if you want to install the dependencies, select "Install All"
+
+![Library Manager](images/2.4.1.png)
+
+### Step 2.5 - Upload Programm
+Now you should be able to upload the program. Connect the ESP-Board to your computer using an USB-Cable.
+
+You have to select the board in the dropdown-menu. Click on the Port of your board (usually the highest number you see):
+
+![Select Board](images/2.5.1.png)
+
+In the Popup search for `D1 mini` and select `LOLIN(WEMOS) D1 R2 & mini`:
+
+![Select Board](images/2.5.2.png)
+
+You can now hit the upload-button on the top left on the window and upload the code. After the Upload is done, check if everything is working before moving on to the assembly.
 
 ## Part 3 - Assembly
