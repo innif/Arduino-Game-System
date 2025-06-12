@@ -8,6 +8,7 @@
 - 2x short M3 countersunk head screw (5mm-10mm)
 - Some thin Wire 
 - Some Solder 
+- USB-Cable
 ### Tools
 - Soldering Iron
 - Cutter Knife or Saw (to cut PCB)
@@ -156,3 +157,17 @@ In the Popup search for `D1 mini` and select `LOLIN(WEMOS) D1 R2 & mini`:
 You can now hit the upload-button on the top left on the window and upload the code. After the Upload is done, check if everything is working before moving on to the assembly.
 
 ## Part 3 - Assembly
+
+### Step 3.1 - Add Components
+Place the screen in the case. If you want, you can use a bit of hot glue, but in most cases this is not necessary.
+
+Then add the buttons. If they dont fit, use a file or sandpaper to make the PCB a bit smaller on the edges that doont fit. Make sure, that the buttons are seated correctly and are pushed all the way through.
+
+Finally add the ESP8266 on top. Make sure, the USB-Connector alligns with the cutout in the case. Now is also a good time to carefully organize the cables and get them away from the side walls.
+
+### Step 3.2 - Add Lid
+As a last step you can add the lid. It should hold all the PCBs in place when seated correctly. If you cant push it down, try reorganizing the cables to make everything fit.
+
+When the lid is seated correctly and snaped into place, use two screws on the side of the case to hold the lid in place. 
+
+Congratulations: you are done. Now connect your new console to any USB-Powersupply and start Gaming!
