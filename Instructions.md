@@ -161,13 +161,23 @@ You can now hit the upload-button on the top left on the window and upload the c
 ### Step 3.1 - Add Components
 Place the screen in the case. If you want, you can use a bit of hot glue, but in most cases this is not necessary.
 
+![Screen in Case](images/3.1.1.jpg)
+
 Then add the buttons. If they dont fit, use a file or sandpaper to make the PCB a bit smaller on the edges that doont fit. Make sure, that the buttons are seated correctly and are pushed all the way through.
 
+![Buttons in Case](images/3.1.2.jpg)
+
 Finally add the ESP8266 on top. Make sure, the USB-Connector alligns with the cutout in the case. Now is also a good time to carefully organize the cables and get them away from the side walls.
+
+![ESP in Case](images/3.1.3.jpg)
 
 ### Step 3.2 - Add Lid
 As a last step you can add the lid. It should hold all the PCBs in place when seated correctly. If you cant push it down, try reorganizing the cables to make everything fit.
 
+![Lid on Box](images/3.2.1.jpg)
+
 When the lid is seated correctly and snaped into place, use two screws on the side of the case to hold the lid in place. 
+
+![Lid on Box](images/3.2.2.jpg)
 
 Congratulations: you are done. Now connect your new console to any USB-Powersupply and start Gaming!
