@@ -2,7 +2,9 @@
 
 A portable handheld gaming console built with ESP8266 and featuring 8 classic games on a 0.96" OLED display.
 
-**Detailed step-by-step instructions are provided in [Instructions.md](Instructions.md)** 
+**Detailed step-by-step instructions are provided in [Instructions.md](Instructions.md)**.
+
+Experienced makers can also go by the information listed in this short readme.
 
 ![Mini Arcade Gaming System](images/finished_console.jpg)
 
@@ -59,8 +61,8 @@ A portable handheld gaming console built with ESP8266 and featuring 8 classic ga
 
 ## 📦 3D Printed Case
 
-The custom 3D printed case files are available on MakerWorld:
-**[Link to be added]**
+The custom 3D printed case files are available on
+**[MakerWorld](https://makerworld.com/en/models/1514181-tiny-retro-arcade-8-games)**.
 
 The case features:
 - Precise cutouts for display and buttons
